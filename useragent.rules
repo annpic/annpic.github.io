@@ -1,0 +1,16 @@
+map $http_user_agent $badagent {
+        default         0;
+		
+~*claudebot   1;    
+~*Bytespider  1; 
+~*Awario      1;  
+~*facebookexternalhit 1;
+~*MJ12bot 1;
+~*Python 1;
+~*Owler 1;
+~*BLEXBot 1;
+~*bingbot 1;
+
+
+		}
+		 
