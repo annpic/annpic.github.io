@@ -1,16 +1,46 @@
 map $http_user_agent $badagent {
-        default         0;
-		
-~*claudebot   1;    
-~*Bytespider  1; 
-~*Awario      1;  
+default 0;
+~*claudebot 1;
+~*Bytespider 1;
+~*Awario 1;
 ~*facebookexternalhit 1;
 ~*MJ12bot 1;
-~*Python 1;
 ~*Owler 1;
-~*BLEXBot 1;
+~*BLEX 1;
 ~*bingbot 1;
-
-
-		}
-		 
+~*dotbot 1;
+~*inoreader 1;
+~*rss 1;
+~*feedly 1;
+~*archive  1;
+~*semrush 1;
+~*linguee 1;
+~*Barkrowler 1;
+~*Chrome/41 1;
+~*YaK/ 1;
+~*Applebot 1;
+~*CCBot 1;
+~*Germ 1;
+~*PHP/ 1;
+~*client 1;
+~*megaindex 1;
+~*Dispatch 1;
+~*proximic 1;
+~*seekport 1;
+~*Zabbix 1;
+~*HostTracker 1;
+~*node-fetch 1;
+~*Adsbot 1;
+~*Python 1;
+~*VelenPublicWebCrawler 1;
+~*GermCrawler 1;
+~*DataForSeoBot 1;
+~*Amazonbot 1;
+~*PetalBot 1;
+~*Go-http-client 1;
+~*newspaper 1;
+~*AsyncHttpClient 1;
+~*FeedFetcher 1;
+~*buck 1;
+~*bitlybot 1;
+}
