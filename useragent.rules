@@ -43,4 +43,7 @@ default 0;
 ~*FeedFetcher 1;
 ~*buck 1;
 ~*bitlybot 1;
+~*okhttp 1;
+~*GuzzleHttp 1;
+~*curl/ 1;
 }
