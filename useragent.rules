@@ -46,4 +46,7 @@ default 0;
 ~*okhttp 1;
 ~*GuzzleHttp 1;
 ~*curl/ 1;
+~*GPTBot/ 1;
+~*semantic-visions/ 1;
+
 }
