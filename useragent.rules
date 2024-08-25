@@ -48,5 +48,5 @@ default 0;
 ~*curl/ 1;
 ~*GPTBot/ 1;
 ~*semantic-visions/ 1;
-
+~*Google-Read-Aloud 1;
 }
