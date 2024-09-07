@@ -49,4 +49,5 @@ default 0;
 ~*GPTBot/ 1;
 ~*semantic-visions/ 1;
 ~*Google-Read-Aloud 1;
+~*FeedParser 1;
 }
