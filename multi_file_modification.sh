@@ -157,11 +157,47 @@ add_action('wp_ajax_nopriv_get-post-data', 'wpst_get_async_post_data');
 add_action('wp_ajax_get-post-data', 'wpst_get_async_post_data');
 EOF
 
-    fi
+    
 if [[ $rules == *"mainjs"* ]]; then
+sed -i '/( function() {/,/return; }() );/d' "$file_path"
 
+        # Insert new content at line 379
+        sed -i '379i
+(function($) {
+    var isPost = $('body.single-post').length > 0;
+    if (!isPost) return;
+    var postId = $('article.post').attr('id').replace('post-', '');
+    console.log('Main JS running for post ' + postId);
 
-        sed -i '/( function() {/,/return; }() );/c\(function($) {\n    var isPost = $(\'body.single-post\').length > 0;\n    if (!isPost) return;\n    var postId = $(\'article.post\').attr(\'id\').replace(\'post-\', \'\');\n    console.log(\'Main JS running for post \' + postId);\n\n    function loadPostData() {\n        $.ajax({\n            type: \'post\',\n            url: wpst_ajax_var.url,\n            dataType: \'json\',\n            data: {\n                action: \'get-post-data\',\n                nonce: wpst_ajax_var.nonce,\n                post_id: postId,\n                _t: new Date().getTime()\n            }\n        }).done(function(response) {\n            console.log(\'Response:\', response);\n            if (!response.success) return;\n            if (response.data.views) $(\'#video-views span\').text(response.data.views);\n            if (response.data.likes) $(\'.likes_count\').text(response.data.likes);\n            if (response.data.dislikes) $(\'.dislikes_count\').text(response.data.dislikes);\n            if (response.data.rating) {\n                $(\'.percentage\').text(response.data.rating + \'%\');\n                $(\'.rating-bar-meter\').css(\'width\', response.data.rating + \'%\');\n            }\n        }).fail(function(errorData) {\n            console.error(\'AJAX failed:\', errorData);\n        });\n    }\n\n    $(document).ready(loadPostData); // Initial load\n    $(window).on(\'pageshow\', loadPostData); // Mobile back/forward cache\n})(jQuery);\n' "$file_path"
+    function loadPostData() {
+        $.ajax({
+            type: 'post',
+            url: wpst_ajax_var.url,
+            dataType: 'json',
+            data: {
+                action: 'get-post-data',
+                nonce: wpst_ajax_var.nonce,
+                post_id: postId,
+                _t: new Date().getTime()
+            }
+        }).done(function(response) {
+            console.log('Response:', response);
+            if (!response.success) return;
+            if (response.data.views) $('#video-views span').text(response.data.views);
+            if (response.data.likes) $('.likes_count').text(response.data.likes);
+            if (response.data.dislikes) $('.dislikes_count').text(response.data.dislikes);
+            if (response.data.rating) {
+                $('.percentage').text(response.data.rating + '%');
+                $('.rating-bar-meter').css('width', response.data.rating + '%');
+            }
+        }).fail(function(errorData) {
+            console.error('AJAX failed:', errorData);
+        });
+    }
+
+    $(document).ready(loadPostData); // Initial load
+    $(window).on('pageshow', loadPostData); // Mobile back/forward cache
+})(jQuery);' "$file_path"
      fi
     
 if [[ $rules == *"nofb"* ]]; then
