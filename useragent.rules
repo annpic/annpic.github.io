@@ -7,7 +7,6 @@ default 0;
 ~*MJ12bot 1;
 ~*Owler 1;
 ~*BLEX 1;
-~*bingbot 1;
 ~*dotbot 1;
 ~*inoreader 1;
 ~*rss 1;
@@ -51,4 +50,7 @@ default 0;
 ~*Google-Read-Aloud 1;
 ~*FeedParser 1;
 ~*HeadlessChrome 1;
+~*OAI-SearchBot 1;
+~*SBIntuitionsBot 1;
+~*Xbot 1;
 }
