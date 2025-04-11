@@ -2,8 +2,12 @@
 :INPUT ACCEPT [1578:377612]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [1463:2234790]
--A INPUT -s 192.133.77.0/24 -p tcp -m tcp --dport 443 --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 1 --connlimit-mask 32 --connlimit-saddr -j DROP
--A INPUT -s 199.16.157.0/24 -p tcp -m tcp --dport 443 --tcp-flags FIN,SYN,RST,ACK SYN -m connlimit --connlimit-above 1 --connlimit-mask 32 --connlimit-saddr -j DROP
+-A INPUT -s 192.133.77.0/24 -p tcp -m multiport --dports 80,443 -m state --state NEW -m limit --limit 2/second --limit-burst 2 -j ACCEPT
+-A INPUT -s 192.133.77.0/24 -p tcp -m multiport --dports 80,443 -m state --state NEW -j LOG --log-prefix "Dropped:192.133.77.0/24 SRC=" --log-level 4 --log-ip-options
+-A INPUT -s 192.133.77.0/24 -p tcp -m multiport --dports 80,443 -m state --state NEW -j DROP
+-A INPUT -s 199.16.157.0/24 -p tcp -m multiport --dports 80,443 -m state --state NEW -m limit --limit 2/second --limit-burst 2 -j ACCEPT
+-A INPUT -s 199.16.157.0/24 -p tcp -m multiport --dports 80,443 -m state --state NEW -j LOG --log-prefix "Dropped:199.16.157.0/24 SRC=" --log-level 4 --log-ip-options
+-A INPUT -s 199.16.157.0/24 -p tcp -m multiport --dports 80,443 -m state --state NEW -j DROP
 -A INPUT -s 135.181.0.0/16 -j DROP
 -A INPUT -s 136.243.0.0/16 -j DROP
 -A INPUT -s 139.99.0.0/16 -j DROP
@@ -100,6 +104,7 @@
 -A INPUT -s 57.141.0.0/16 -j DROP
 -A INPUT -s 13.74.0.0/16 -j DROP
 -A INPUT -s 141.94.0.0/16 -j DROP
+-A INPUT -s 116.76.0.0/16 -j DROP
 -A INPUT -s 100.21.24.0/24 -j DROP
 -A INPUT -s 103.105.35.0/24 -j DROP
 -A INPUT -s 103.166.9.0/24 -j DROP
