@@ -55,4 +55,6 @@ default 0;
 ~*Xbot 1;
 ~*Qwantbot 1;
 ~*GenomeCrawlerd 1;
+~*zgrab 1;
+~*Keydrop 1;
 }
