@@ -57,4 +57,5 @@ default 0;
 ~*GenomeCrawlerd 1;
 ~*zgrab 1;
 ~*Keydrop 1;
+~*Scrapy 1;
 }
