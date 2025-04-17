@@ -52,10 +52,11 @@ default 0;
 ~*HeadlessChrome 1;
 ~*OAI-SearchBot 1;
 ~*SBIntuitionsBot 1;
-~*Xbot 1;
+~*Xbot/1.0 1;
 ~*Qwantbot 1;
 ~*GenomeCrawlerd 1;
 ~*zgrab 1;
 ~*Keydrop 1;
 ~*Scrapy 1;
+~*intelx 1;
 }
