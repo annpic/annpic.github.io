@@ -59,4 +59,6 @@ default 0;
 ~*Keydrop 1;
 ~*Scrapy 1;
 ~*intelx 1;
+~*CensysInspect 1;
+~*Expanse 1;
 }
